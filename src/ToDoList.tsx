@@ -25,6 +25,7 @@ export const ToDoList = (props:ToDoListPropsType) => {
                     )}
                 )}
             </ul>
+
             <div>
                 <button>All</button>
                 <button>Active</button>
