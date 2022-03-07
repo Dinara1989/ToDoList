@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import {ToDoList} from "./ToDoList";
-// import {Students} from "./Students";
-import {Header} from "./Header";
-import {Footer} from "./Footer"
+import {ToDoList} from "./components/ToDoList";
+import {Header} from "./components/Header";
+import {Button} from "./components/Button";
 
 function App() {
     const tasks1 = [
@@ -16,20 +15,37 @@ function App() {
         {id: 2, title: "Cleaning", isDone: true},
         {id: 3, title: "Dish washing", isDone: true}
     ]
-    // const students1 = [
-    //     {id: 1, name: "John", age: "21", isStudent: true},
-    //     {id: 2, name: "Jim", age: "19", isStudent: false},
-    //     {id: 3, name: "Jonson", age: "20", isStudent: true}
+    // const topCars = [
+    //     {manufacturer:'BMW', model:'m5cs'},
+    //     {manufacturer:'Mercedes', model:'e63s'},
+    //     {manufacturer:'Audi', model:'rs6'}
     // ]
-    // const myFirstSubscriber = () => {
-    //     console.log("Hello, I'm Vasya!")
-    // }
-    // const mySecondSubscriber = () => {
-    //     console.log("Hello, I'm Dinara!")
-    // }
 
-    const onClickHandler = (name:string) => {
-        console.log(name)
+    // const Button1Foo=(subscriber:string, age:number)=>{
+    //     console.log(subscriber, age)
+    // }
+    // const Button2Foo=(subscriber:string)=>{
+    //     console.log(subscriber)
+    // }
+    // const [money, setMoney] = useState([
+    //     { banknots: 'Dollars', value: 100, number: ' a1234567890' },
+    //     { banknots: 'Dollars', value: 50, number: ' z1234567890' },
+    //     { banknots: 'RUBLS', value: 100, number: ' w1234567890' },
+    //     { banknots: 'Dollars', value: 100, number: ' e1234567890' },
+    //     { banknots: 'Dollars', value: 50, number: ' c1234567890' },
+    //     { banknots: 'RUBLS', value: 100, number: ' r1234567890' },
+    //     { banknots: 'Dollars', value: 50, number: ' x1234567890' },
+    //     { banknots: 'RUBLS', value: 50, number: ' v1234567890' },
+    // ])
+    let[a, setA] = useState(1)
+
+    const onClickHandler = () => {
+      setA(++a);
+        console.log(a)
+    }
+    const onClickDel = () => {
+        setA(--a);
+        console.log(a)
     }
 
     return (
@@ -37,10 +53,11 @@ function App() {
             <Header headerTitle={"Have a nice day!"}/>
             <ToDoList title={"Wont to learn"} tasks={tasks1}/>
             <ToDoList title={"Don't want to learn"} tasks={tasks2}/>
-            {/*<Students title={"Students"} students={students1}/>*/}
-            <button onClick={(event: MouseEvent<HTMLButtonElement>) =>onClickHandler(name: 'Vsya')}>MyYouTubeChanel-1</button>
-            <button onClick={(event: MouseEvent<HTMLButtonElement>) =>onClickHandler(name: 'Dinara')}>MyYouTubeChanel-1</button>
-            <Footer/>
+            <h2>{a}</h2>
+            <button onClick={onClickHandler}>number</button>
+            <button onClick={onClickDel}>0</button>
+            {/*<Button name={'My YouTube Chanel-1'} callBack={()=>Button1Foo("I'm Vasya", 21)}/>*/}
+            {/*<Button name={'My YouTube Chanel-1'} callBack={()=>Button2Foo("I'm Dinara")}/>*/}
         </div>
     )
 }
